@@ -8,11 +8,17 @@
 import SwiftUI
 
 struct listingImageCarasoulView: View {
+    let listing: Listing
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        TabView{
+            ForEach(listing.imageURLS, id: \.self){ image in
+                Image(image).resizable()  .scaledToFill()
+        }
+        }
+            .tabViewStyle(.page)
     }
 }
 
 #Preview {
-    listingImageCarasoulView()
+    listingImageCarasoulView(listing:DeveloperPreview.shared.listings[0])
 }
